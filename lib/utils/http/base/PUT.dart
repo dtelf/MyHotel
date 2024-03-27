@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ import '../ErrorResponse/ErrorResponse.dart';
 import '../HttpAPI.dart';
 
 class PUT {
-  static Future<HttpResponse?> execute(baseUrl, urlPath, jsonIn, authHeaders, stopWatch) async {
+  static FutureOr<HttpResponse?> execute(baseUrl, urlPath, jsonIn, authHeaders, stopWatch) async {
     final uri = Uri.https(baseUrl, urlPath);
 
     debugPrint("\n  //--- HTTP API ---\\\\");
@@ -16,7 +17,7 @@ class PUT {
       debugPrint("      $key = $value\n ");
     });
     debugPrint("     Json In -\n");
-    debugPrint("${jsonIn}\n");
+    debugPrint("$jsonIn\n");
 
     debugPrint(" --- END ---  \n");
     debugPrint("   Sending Request...");
@@ -30,14 +31,14 @@ class PUT {
 
       int statusCode = response.statusCode;
       String responseBody = response.body;
-      debugPrint("  Body Received - ${responseBody}\n");
+      debugPrint("  Body Received - $responseBody\n");
 
       if (statusCode != 200) {
         try {
           if (statusCode == 666) {
             return null;
           }
-          debugPrint("   HttpAPI ERROR - \n      HTTP Request Failed with Result $statusCode\n${responseBody}");
+          debugPrint("   HttpAPI ERROR - \n      HTTP Request Failed with Result $statusCode\n$responseBody");
           var responseDecoded = ErrorResponse.fromJson(jsonDecode(responseBody));
 
           return HttpResponse(statusCode: statusCode, body: responseBody, errorResponse: responseDecoded);

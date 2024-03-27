@@ -62,8 +62,8 @@ class _RoomsViewState extends State<RoomsView> {
 
           ),
       body: Container(
-        padding: EdgeInsets.all(5),
-        color: Color.fromARGB(255, 95, 157, 207),
+        padding: const EdgeInsets.all(5),
+        color: const Color.fromARGB(255, 95, 157, 207),
         height: size.height,
         width: size.width,
         child: ListView.builder(
@@ -93,7 +93,7 @@ class _RoomsViewState extends State<RoomsView> {
                           padding: const EdgeInsets.all(14.0),
                           child: Text(
                             "Room ${Globals.rooms[index].roomNumber}",
-                            style: TextStyle(fontSize: 25),
+                            style: const TextStyle(fontSize: 25),
                           ),
                         ),
                       ),

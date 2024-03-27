@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -6,7 +7,7 @@ import '../ErrorResponse/ErrorResponse.dart';
 import '../HttpAPI.dart';
 
 class GET {
-  static Future<HttpResponse?> execute(baseUrl, urlPath, Map<String, String> queryParameters, authHeaders, stopWatch) async {
+  static FutureOr<HttpResponse?> execute(baseUrl, urlPath, Map<String, String> queryParameters, authHeaders, stopWatch) async {
     // queryParameters = queryParameters.removeNullValues();
     final uri = Uri.https(baseUrl, urlPath, queryParameters);
 
@@ -33,14 +34,14 @@ class GET {
       int statusCode = response.statusCode;
       String responseBody = response.body;
 
-      debugPrint("  Body Received - ${responseBody}\n");
+      debugPrint("  Body Received - $responseBody\n");
 
       if (statusCode != 200) {
         try {
           if (statusCode == 666) {
             return null;
           }
-          debugPrint("   HttpAPI ERROR - \n      HTTP Request Failed with Result $statusCode\n${responseBody}");
+          debugPrint("   HttpAPI ERROR - \n      HTTP Request Failed with Result $statusCode\n$responseBody");
           var responseDecoded = ErrorResponse.fromJson(jsonDecode(responseBody));
 
           return HttpResponse(statusCode: statusCode, body: responseBody, errorResponse: responseDecoded);

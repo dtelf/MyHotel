@@ -1,10 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
-import 'Base/GET.dart';
 import 'Base/POST.dart';
-import 'Base/PUT.dart';
 import 'ErrorResponse/ErrorResponse.dart';
 
 /*
@@ -18,7 +15,7 @@ flutter pub run build_runner watch --delete-conflicting-outputs;
 */
 
 class HttpAPI {
-  static Duration REQUEST_TIMEOUT_TIME = Duration(seconds: 30);
+  static Duration REQUEST_TIMEOUT_TIME = const Duration(seconds: 30);
   // var ApiUrl = "localhost";
   var ApiUrl = "myhotel.iworkr.app";
   // var ApiUrl = "192.168.206.115";
@@ -44,7 +41,7 @@ class HttpAPI {
       jsonInEncoded = jsonIn;
     }
 
-    var urlPath = "/api/" + method;
+    var urlPath = "/api/$method";
 
     stopWatch.reset();
 

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 part 'GetHotelRoomsResp.g.dart';
 
@@ -17,9 +16,9 @@ class GetHotelRoomsResp {
 
   static List<GetHotelRoomsResp> fromArray(List<dynamic> list) {
     List<GetHotelRoomsResp> result = [];
-    list.forEach((item) {
+    for (var item in list) {
       result.add(GetHotelRoomsResp.fromJson(item));
-    });
+    }
     return result;
   }
 
@@ -39,7 +38,7 @@ class Rooms {
   @JsonKey(name: 'Cleaning')
   bool? isCleaning;
   @JsonKey(name: 'MaintenanceStatus')
-  int? isMaintenance;
+  bool? isMaintenance;
   @JsonKey(name: 'MaintenanceNotes')
   String? maintenanceNotes;
 
@@ -47,9 +46,9 @@ class Rooms {
 
   static List<Rooms> fromArray(List<dynamic> list) {
     List<Rooms> result = [];
-    list.forEach((item) {
+    for (var item in list) {
       result.add(Rooms.fromJson(item));
-    });
+    }
     return result;
   }
 

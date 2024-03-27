@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 part 'UpdateCleaningStatusReq.g.dart';
 
@@ -13,9 +12,9 @@ class UpdateCleaningStatusReq {
 
   static List<UpdateCleaningStatusReq> fromArray(List<dynamic> list) {
     List<UpdateCleaningStatusReq> result = [];
-    list.forEach((item) {
+    for (var item in list) {
       result.add(UpdateCleaningStatusReq.fromJson(item));
-    });
+    }
     return result;
   }
 

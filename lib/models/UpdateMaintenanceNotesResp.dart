@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 part 'UpdateMaintenanceNotesResp.g.dart';
 
@@ -13,9 +12,9 @@ class UpdateMaintenanceNotesResp {
 
   static List<UpdateMaintenanceNotesResp> fromArray(List<dynamic> list) {
     List<UpdateMaintenanceNotesResp> result = [];
-    list.forEach((item) {
+    for (var item in list) {
       result.add(UpdateMaintenanceNotesResp.fromJson(item));
-    });
+    }
     return result;
   }
 

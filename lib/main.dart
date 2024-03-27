@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myhotel/utils/Globals.dart';
-import 'package:myhotel/views/RoomView.dart';
 import 'package:myhotel/views/RoomsView.dart';
 
 void main() {
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       navigatorKey: Globals.navigatorKey,
-      home: RoomsView(),
+      home: const RoomsView(),
     );
   }
 }
